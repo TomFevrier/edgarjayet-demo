@@ -1,74 +1,30 @@
-article {
-	display: grid;
-	grid-template-columns: 2fr 3fr;
-	grid-template-areas: 'main aside';
+.text {
+    width: 600px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-.main {
-	position: sticky;
-	padding: 1rem;
-	grid-area: main;
+.text h2 {
+    display: block;
+    margin: 0 auto;
+    width: min-content;
+    line-height: 150%;
 }
 
-.main p {
-	font: 1rem 'Roboto', sans-serif;
+.title {
+    font-size: 50px;
 }
 
-.main h1 {
-	font: 800 2rem 'Assistant', sans-serif;
-	margin: 0;
+.date {
+    font-size: 18px;
+    font-weight: normal;
+    vertical-align: top;
 }
 
-.main .publisher {
-	font-weight: 800;
-	text-decoration: none;
-	color: var(--main-color);
-}
-
-.main .publisher:hover {
-	color: black;
-}
-
-.main .date {
-	color: grey;
-}
-
-aside {
-	padding: 1rem;
-	grid-area: aside;
-}
-
-.grid {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	padding: 0;
-}
-
-.item {
-	width: 100%;
-	padding: 0.5rem;
-}
-
-@media only screen and (max-width: 1200px) {
-	.grid {
-		grid-template-columns: 1fr;
-	}
-}
-
-@media only screen and (max-width: 960px) {
-	article {
-		grid-template-columns: 1fr;
-		grid-template-areas:
-			'aside'
-			'main';
-	}
-	.grid {
-		grid-template-columns: repeat(2, 1fr);
-	}
-}
-
-@media only screen and (max-width: 600px) {
-	.grid {
-		grid-template-columns: 1fr;
-	}
+.content {
+    font-size: 14px;
+    width: 60%;
+    margin: 0 auto;
 }

@@ -1,22 +1,9 @@
 .container {
-  text-align: center;
+    text-align: center;
 }
 
 .container div {
-  position: relative;
-  width: 500px;
-  margin: 0 auto;
-}
-
-.container div img:first-child {
-  display: block;
-  width: 100%;
-}
-
-.container div img:last-child {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 2.5rem;
-  opacity: 0.5;
+    position: relative;
+    width: 500px;
+    margin: 0 auto;
 }
