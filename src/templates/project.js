@@ -8,7 +8,7 @@ import SEO from '../components/seo';
 import styles from './project.module.css';
 
 const ProjectTemplate = ({ data }) => (
-    <Layout>
+	<Layout>
         <SEO title={data.strapiProject.title} />
         <article>
             <div className={styles.imageMain}></div>
@@ -24,7 +24,7 @@ const ProjectTemplate = ({ data }) => (
                 <p className={styles.content}>{data.strapiProject.content}</p>
             </div>
         </article>
-    </Layout>
+	</Layout>
 );
 
 export default ProjectTemplate;

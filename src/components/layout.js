@@ -9,7 +9,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql, Link } from 'gatsby';
 
-import Header from './header';
 import styles from './layout.module.css';
 
 // if (typeof window === 'undefined') {
@@ -24,35 +23,7 @@ class Layout extends React.Component {
     render() {
         return (
             <>
-                <Header />
                 <main>{this.props.children}</main>
-                <footer style={{ display: 'none' }}>
-                    © {new Date().getFullYear()} -{' '}
-                    <a
-                        href="https://github.com/TomFevrier/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Tom Février
-                    </a>
-                    <br />
-                    Powered by{' '}
-                    <a
-                        href="https://www.gatsbyjs.org"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Gatsby
-                    </a>{' '}
-                    &{' '}
-                    <a
-                        href="http://strapi.io"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        Strapi
-                    </a>
-                </footer>
             </>
         );
     }

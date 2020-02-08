@@ -8,56 +8,101 @@ import classNames from 'classnames';
 
 import styles from './project-preview.module.css';
 
-const ProjectPreview = props => (
-    <CSSTransition
-        mountOnEnter
-        unmountOnExit
-        in={props.filter === 'all' || props.filter === props.node.category}
-        timeout={300}
-        classNames={{ ...styles }}
-    >
-        {state => (
-            <li
-                className={classNames(
-                    props.node.category,
-                    styles.item,
-                    styles[state]
-                )}
-            >
-                <Link to={`/project/${props.node.slug}`}>
-                    {console.log(state)}
-                    <p>{props.node.title}</p>
-                </Link>
-            </li>
-        )}
-    </CSSTransition>
-);
+class ProjectPreview extends React.Component {
+    constructor(props) {
+        super(props);
+        // this.handleMouseEnter = this.handleMouseEnter.bind(this);
+		// this.handleMouseMove = this.handleMouseMove.bind(this);
+		// this.handleMouseLeave = this.handleMouseLeave.bind(this);
+        // this.tooltip = React.createRef();
+    }
 
-// const ProjectPreview = node => (
-// 	<AniLink paintDrip color="rebeccapurple" to={`/projet/${node.slug}`}>
-// 		<div className={styles.card}>
-// 			{node.featured_image && (
-// 				<Img
-// 					fluid={node.featured_image.childImageSharp.fluid}
-// 					className={styles.thumbnail}
-// 				/>
-// 			)}
-// 			<div className={styles.cache}></div>
-// 			<div className={styles.info}>
-// 				<h2>
-// 					<span>{node.title}</span>
-// 				</h2>
-// 				<p>
-// 					{node.publisher && (
-// 						<span>
-// 							<b>{node.publisher.name}</b> &mdash;{' '}
-// 						</span>
-// 					)}
-// 					<span>{new Date(node.date).toLocaleDateString('fr-FR')}</span>
-// 				</p>
-// 			</div>
-// 		</div>
-// 	</AniLink>
-// );
+	// handleMouseEnter(e) {
+	// 	console.log(e.target.tagName)
+	// 	if (e.target.tagName !== 'IMG') return;
+	// 	this.tooltip.current.style.opacity = 1;
+	// }
+	//
+	// handleMouseMove(e) {
+	// 	console.log(e.target.tagName)
+	// 	if (e.target.tagName !== 'IMG') return;
+	// 	console.log(e.nativeEvent)
+	// 	this.tooltip.current.style.left = e.nativeEvent.layerX + 'px';
+	// 	this.tooltip.current.style.top = e.nativeEvent.layerY + 'px';
+	// }
+	//
+	// handleMouseLeave(e) {
+	// 	console.log(e.target.tagName)
+	// 	if (e.target.tagName !== 'IMG') return;
+	// 	console.log("leave")
+	// 	this.tooltip.current.style.opacity = 0;
+	// }
+
+    render() {
+        const { filter, node } = this.props;
+        return (
+
+					<li className={styles.item}>
+	                    <div
+	                        style={node.imageMain.childImageSharp && {
+	                            width:
+	                                node.imageMain.childImageSharp.fluid.aspectRatio >= 1
+	                                    ? '80%'
+	                                    : `calc(80vh * ${node.imageMain.childImageSharp.fluid.aspectRatio})`,
+								paddingTop:
+	                                node.imageMain.childImageSharp.fluid.aspectRatio >= 1
+	                                    ? 0
+	                                    : '10vh',
+								//width: '100%',
+	                        }}
+	                    >
+	                        <Link to={`/project/${node.slug}`}
+								onMouseEnter={this.handleMouseEnter}
+								onMouseMove={this.handleMouseMove}
+								onMouseLeave={this.handleMouseLeave}
+							>
+								{node.imageMain.childImageSharp &&
+		                            <Img
+										fluid={node.imageMain.childImageSharp.fluid}
+										className={styles.thumbnail}
+		                            />
+								}
+	                        </Link>
+							{/*
+	                        <div className={styles.tooltip} ref={this.tooltip} style={{display: "none"}}>
+	                            <h3>{node.title}</h3>
+	                            <h4>{node.location}</h4>
+	                            <p>{new Date(node.date).getFullYear()}</p>
+	                        </div>
+							*/}
+	                    </div>
+					</li>
+
+        );
+    }
+}
+
+/*
+	<CSSTransition
+	mountOnEnter
+	unmountOnExit
+	in={filter === 'all' || filter === node.category}
+	timeout={300}
+	classNames={{ ...styles }}
+>
+	{state => (
+)}
+*/
+
+// </CSSTransition>
+
+//
+
+// transform:
+//     props.node.imageMain.childImageSharp.fluid
+//         .aspectRatio >= 1
+//         ? `translateY(calc(${Math.random() * 50 +
+//               20}vh - 50%))`
+//         : 'none',
 
 export default ProjectPreview;

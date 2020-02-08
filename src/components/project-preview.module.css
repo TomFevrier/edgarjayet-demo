@@ -1,20 +1,54 @@
 .item {
-    display: block;
-    width: 200px;
-    padding: 0.5rem;
-    margin: 1rem;
-    background-color: rebeccapurple;
-    pointer-events: auto;
+	display: inline-block;
+	width: 50rem;
+	height: 100vh;
+	position: relative;
+	top: 0;
 }
 
-.enter,
-.enterActive {
-    opacity: 1;
-    transition: all 0.3s;
+.item div {
+	margin: 0 auto;
 }
 
-.exit,
-.exitActive {
+.thumbnail {
+	margin: 0 auto;
+}
+
+.tooltip {
+    position: absolute;
+    width: 20rem;
     opacity: 0;
-    transition: all 0.3s;
+	transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+}
+
+.tooltip h3 {
+    font-size: 25px;
+    margin: 0.5rem 0;
+}
+
+.tooltip h4 {
+    font-size: 20px;
+    margin: 0.5rem 0;
+}
+
+.tooltip p {
+    font-size: 15px;
+    margin: 0.5rem 0;
+}
+
+@media only screen and (max-width: 600px) {
+	.item {
+		display: block;
+		width: 90%;
+		margin: 0 auto;
+		height: auto;
+	}
+
+	.item div {
+		width: 100% !important;
+		padding-top: 0 !important;
+		margin: 1rem 0;
+	}
+
 }
