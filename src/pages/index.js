@@ -16,35 +16,40 @@ class IndexPage extends React.Component {
 		console.log(props.data.allStrapiProject.edges)
         this.state = {
             filter: 'all',
-            showMenu: false,
         };
         this.showMenu = this.showMenu.bind(this);
         this.handleClick = this.handleClick.bind(this);
 		this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
-		this.ref = React.createRef();
+		this.menu = React.createRef();
+		this.burger = React.createRef();
     }
 
     showMenu() {
-        if (this.showMenuTimeout) clearTimeout(this.showMenuTimeout);
-        this.setState({ showMenu: true });
-        this.showMenuTimeout = setTimeout(() => {
-            this.setState({ showMenu: false });
-        }, 5000);
+		if (window.matchMedia('(min-width: 600px)').matches) {
+			if (this.showMenuTimeout) clearTimeout(this.showMenuTimeout);
+	        this.menu.current.style.opacity = 1;
+			this.menu.current.style.pointerEvents = 'auto';
+	        this.showMenuTimeout = setTimeout(() => {
+	            this.menu.current.style.opacity = 0;
+				this.menu.current.style.pointerEvents = 'none';
+	        }, 4000);
+		}
     }
 
     handleClick(e) {
-        this.showMenu();
         if (this.state.filter === e.target.id || e.target.id === 'all') {
             this.setState({ filter: 'all' });
         } else {
             this.setState({ filter: e.target.id });
         }
 		if (window.matchMedia('(max-width: 600px)').matches)
-			this.setState({showMenu: false});
+			this.toggleMobileMenu();
     }
 
 	toggleMobileMenu(e) {
-        this.setState({showMenu: !this.state.showMenu});
+		this.menu.current.style.opacity = (this.menu.current.style.opacity == 0) ? 1 : 0;
+		this.menu.current.style.pointerEvents = (this.menu.current.style.opacity == 0) ? 'none' : 'auto';
+		this.burger.current.classList.toggle(styles.close);
     };
 
 
@@ -54,18 +59,19 @@ class IndexPage extends React.Component {
             <Layout>
 				<SEO title="Portfolio" />
 				<aside>
-	                <Header onMouseEnter={this.showMenu} />
+	                <Header onMouseEnter={this.showMenu} onClick={() => this.setState({ filter: 'all' })} />
 					<div
 						className={styles.menuWrapper}
-						style={{
-							opacity: state.showMenu ? 1 : 0,
-							pointerEvents: state.showMenu ? 'auto' : 'none'
-						}}
+						ref={this.menu}
 					>
 	                    <ul className={styles.menu}>
 							<li
 							   id="all"
-							   className={styles.all}
+							   className={classnames(styles.all,
+								   state.filter === 'all'
+									   ? styles.highlighted
+									   : ''
+							   )}
 							   onClick={this.handleClick}
 						   >
 							   All
@@ -140,9 +146,10 @@ class IndexPage extends React.Component {
 	                    </ul>
 	                </div>
 					<div
-						className={classnames(styles.burger, state.showMenu ? styles.close : '')}
+						className={styles.burger}
 						onClick={this.toggleMobileMenu}
-						ref={this.ref}>
+						ref={this.burger}
+					>
 	                    <div className={styles.line}></div>
 	                </div>
 				</aside>

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import Header from '../components/header';
 
 import styles from './404.module.css';
 
@@ -9,10 +10,19 @@ const NotFoundPage = () => {
     return (
         <Layout>
             <SEO title="404" />
-            <div className={styles.container}>
-                <h2>Erreur 404</h2>
-                <p>Snif snif... Cette page n'existe pas.</p>
-            </div>
+			<Header />
+			<div className={styles.container}>
+				<h1>keep posted.</h1>
+				<h3>for the restless, have a look{" "}
+					<a
+						href="https://www.instagram.com/edgarjayet/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						on instagram, @edgarjayet
+					</a>
+				</h3>
+			</div>
         </Layout>
     );
 };

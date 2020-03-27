@@ -55,7 +55,10 @@ class About extends React.Component {
 
 	render() {
 		const about = this.props.data.allStrapiAbout.edges[0].node.about;
+		const aboutEng = this.props.data.allStrapiAbout.edges[0].node.about_eng;
 		const cv = this.props.data.allStrapiAbout.edges[0].node.cv.internal.description
+						.replace("File \"", "").replace("\"", "");
+		const cvEng = this.props.data.allStrapiAbout.edges[0].node.cv_eng.internal.description
 						.replace("File \"", "").replace("\"", "");
 		const articles = this.props.data.allStrapiArticle.edges;
 	    return (
@@ -81,8 +84,15 @@ class About extends React.Component {
 					onMouseLeave={this.revertBackgroundColor}
 					style={{ opacity: this.state.asideVisible ? 1 : 0 }}
 				>
-					<p><a href={cv} target="_blank" rel="noopener noreferrer" download>Download CV</a></p>
-	                {about}
+					<p>
+						<a href={cv} target="_blank" rel="noopener noreferrer" download>Télécharger le CV</a>
+						{" "}
+						<span className={styles.english}>(
+							<a href={cvEng} target="_blank" rel="noopener noreferrer" download>in english</a>
+						)</span>
+					</p>
+	                <p>{about}</p>
+					<p className={styles.english}>{aboutEng}</p>
 	            </div>
 				<div
 					className = {styles.articles}
@@ -126,7 +136,13 @@ export const pageQuery = graphql`
             edges {
                 node {
                     about
+					about_eng
 					cv {
+						internal {
+							description
+						}
+					}
+					cv_eng {
 						internal {
 							description
 						}

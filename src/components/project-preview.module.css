@@ -3,13 +3,17 @@
 	width: 50rem;
 	height: 100vh;
 	position: relative;
-	top: 0;
+	margin: 2.5rem;
+	padding: 0;
 }
 
 .container {
 	margin: auto;
-	margin-top: 15rem;
-	position: relative;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	width: 100%;
 }
 
 .thumbnail {
@@ -18,7 +22,6 @@
 
 .tooltip {
     position: absolute;
-	/* background-color: rgba(255, 255, 255, 0.5); */
 	top: 0;
 	left: 0;
 	width: fit-content;
@@ -51,9 +54,16 @@
 @media only screen and (max-width: 600px) {
 	.item {
 		display: block;
-		width: 90%;
+		width: 90% !important;
 		margin: 0 auto;
 		height: auto;
+	}
+
+	.container {
+		position: relative;
+		display: block;
+		top: 0 !important;
+		transform: none;
 	}
 
 	.item div {

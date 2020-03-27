@@ -1,3 +1,8 @@
+.english {
+	font-style: italic;
+	font-size: 1rem;
+}
+
 .info {
 	position: absolute;
 	color: white;
@@ -12,7 +17,7 @@
 
 .about {
 	position: absolute;
-	width: 25rem;
+	width: 30rem;
 	color: white;
 	padding-left: 2rem;
 	bottom: 2rem;
@@ -27,7 +32,7 @@
 .articles {
 	position: absolute;
 	text-align: right;
-	width: 25rem;
+	width: 30rem;
 	color: white;
 	padding-right: 2rem;
 	right: 0;
@@ -61,9 +66,15 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 25rem;
+	width: 30rem;
 	max-height: 80vh;
 	display: none;
+}
+
+@media only screen and (max-width: 1400px) {
+	.articlePreview {
+		width: 20rem;
+	}
 }
 
 @media only screen and (max-width: 1200px) {

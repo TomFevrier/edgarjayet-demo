@@ -34,21 +34,23 @@ class ProjectPreview extends React.Component {
         const { node } = this.props;
         return (
 
-					<li className={styles.item}>
+					<li className={styles.item}
+						style={node.imageMain.childImageSharp && {
+							width:
+								node.imageMain.childImageSharp.fluid.aspectRatio >= 1
+									? '40rem'
+									: `${80 * node.imageMain.childImageSharp.fluid.aspectRatio}vh`
+						}}
+					>
+						{console.log(`${Math.floor(40 + Math.random() * 20)}%`)}
 	                    <div className={styles.container}
-	                        style={node.imageMain.childImageSharp && {
-	                            width:
-	                                node.imageMain.childImageSharp.fluid.aspectRatio >= 1
-	                                    ? '80%'
-	                                    : `${75 * node.imageMain.childImageSharp.fluid.aspectRatio}vh`,
-								marginTop:
-	                                node.imageMain.childImageSharp.fluid.aspectRatio >= 1
-	                                    ? 'none'
-	                                    : '15vh'
-	                        }}
 							onMouseEnter={this.handleMouseEnter}
 							// onMouseMove={this.handleMouseMove}
 							onMouseLeave={this.handleMouseLeave}
+							style={node.imageMain.childImageSharp && {
+								top: node.imageMain.childImageSharp.fluid.aspectRatio >= 1 ?
+									`${Math.floor(35 + Math.random() * 30)}%` : '50%'
+							}}
 	                    >
 	                        <Link to={`/project/${node.slug}`}>
 								{node.imageMain.childImageSharp &&
@@ -59,7 +61,7 @@ class ProjectPreview extends React.Component {
 								}
 	                        </Link>
 							<div className={styles.tooltip} ref={this.tooltip}>
-								<h3>{node.title}<span class={styles.year}>{new Date(node.date).getFullYear()}</span></h3>
+								<h3>{node.title}<span className={styles.year}>{new Date(node.date).getFullYear()}</span></h3>
 								<p>{node.location}</p>
 							</div>
 	                    </div>
