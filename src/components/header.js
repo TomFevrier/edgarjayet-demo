@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import styles from './header.module.css';
+import './header.module.css';
 
-const Header = ({ onMouseEnter }) => {
+const Header = ({ onMouseEnter, color }) => {
     return (
         <header>
             <Link to={'/'} onMouseEnter={onMouseEnter}>
-                <h1>Edgar Jayet</h1>
+                <h1 style={{ 'color': color || 'black' }}>Edgar Jayet</h1>
             </Link>
         </header>
     );

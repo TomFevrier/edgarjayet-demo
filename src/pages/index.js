@@ -34,11 +34,13 @@ class IndexPage extends React.Component {
 
     handleClick(e) {
         this.showMenu();
-        if (this.state.filter === e.target.id || e.target.id == 'all') {
+        if (this.state.filter === e.target.id || e.target.id === 'all') {
             this.setState({ filter: 'all' });
         } else {
             this.setState({ filter: e.target.id });
         }
+		if (window.matchMedia('(max-width: 600px)').matches)
+			this.setState({showMenu: false});
     }
 
 	toggleMobileMenu(e) {
@@ -53,7 +55,13 @@ class IndexPage extends React.Component {
 				<SEO title="Portfolio" />
 				<aside>
 	                <Header onMouseEnter={this.showMenu} />
-					<div className={styles.menuWrapper} style={{ opacity: state.showMenu ? 1 : 0 }}>
+					<div
+						className={styles.menuWrapper}
+						style={{
+							opacity: state.showMenu ? 1 : 0,
+							pointerEvents: state.showMenu ? 'auto' : 'none'
+						}}
+					>
 	                    <ul className={styles.menu}>
 							<li
 							   id="all"
@@ -109,10 +117,7 @@ class IndexPage extends React.Component {
 	                        <li id="about">
 	                            <Link to={'/about'}>About</Link>
 	                        </li>
-	                        <li id="press">
-	                            <Link to={'/press'}>Press</Link>
-	                        </li>
-	                        <li id="Instagram">
+	                        <li id="instagram">
 	                            <a
 	                                href="https://www.instagram.com/edgarjayet"
 	                                target="_blank"
@@ -121,6 +126,17 @@ class IndexPage extends React.Component {
 	                                Instagram
 	                            </a>
 	                        </li>
+							<li className={styles.credit}>
+								{`© ${new Date().getFullYear()} - `}
+								<a
+								   href="https:/tomfevrier.io"
+								   target="_blank"
+								   rel="noopener noreferrer"
+								>
+									Tom Février
+							   </a>
+
+						   </li>
 	                    </ul>
 	                </div>
 					<div
@@ -138,7 +154,6 @@ class IndexPage extends React.Component {
                                 <ProjectPreview
                                     key={node.id}
                                     node={node}
-                                    filter={state.filter}
                                 />
                             ))
 						}
@@ -154,7 +169,7 @@ export default IndexPage;
 
 export const pageQuery = graphql`
     query IndexQuery {
-        allStrapiProject {
+        allStrapiProject(sort: { fields: date, order: DESC }) {
             edges {
                 node {
                     id

@@ -1,0 +1,90 @@
+.info {
+	position: absolute;
+	color: white;
+	padding-left: 2rem;
+	top: 6rem;
+}
+
+.info p {
+	margin: 0;
+	font-size: 1.1rem;
+}
+
+.about {
+	position: absolute;
+	width: 25rem;
+	color: white;
+	padding-left: 2rem;
+	bottom: 2rem;
+}
+
+.about a {
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: white;
+}
+
+.articles {
+	position: absolute;
+	text-align: right;
+	width: 25rem;
+	color: white;
+	padding-right: 2rem;
+	right: 0;
+	bottom: 2rem;
+}
+
+.articles li {
+	margin: 1.5rem 0;
+}
+
+.articles p {
+	margin: 0;
+	line-height: 1.5rem;
+}
+
+.articles a {
+	color: white;
+}
+
+.articles .publisher {
+	font-weight: bold;
+	font-size: 1.1rem;
+}
+
+.articles .title {
+	font-style: italic;
+}
+
+.articlePreview {
+	position: fixed !important;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 25rem;
+	max-height: 80vh;
+	display: none;
+}
+
+@media only screen and (max-width: 1200px) {
+	.info, .about, .articles {
+		position: relative;
+		width: 90%;
+		margin: 0;
+		margin-left: 2rem;
+		padding: 0;
+		top: 0;
+	}
+
+	.articles {
+		text-align: left;
+	}
+
+}
+
+@media only screen and (max-width: 600px) {
+	.info {
+		margin-top: 6rem;
+	}
+
+}

@@ -7,23 +7,19 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { graphql, Link } from 'gatsby';
 
-import styles from './layout.module.css';
+import './layout.module.css';
 
 // if (typeof window === 'undefined') {
 //     global.window = {};
 // }
 
 class Layout extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (
             <>
-                <main>{this.props.children}</main>
+                <main style={{ 'backgroundColor': this.props.backgroundColor || 'white' }}>{this.props.children}</main>
             </>
         );
     }

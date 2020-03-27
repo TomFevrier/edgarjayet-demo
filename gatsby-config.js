@@ -1,7 +1,7 @@
 module.exports = {
     siteMetadata: {
         title: 'Edgar Jayet',
-        description: 'Datajournalisme et nouveaux formats',
+        description: '',
         author: 'Edgar Jayet',
     },
     plugins: [
@@ -10,13 +10,11 @@ module.exports = {
             resolve: 'gatsby-source-strapi',
             options: {
                 apiURL: 'https://edgarjayet.herokuapp.com',
-                //apiURL: 'https://localhost:1337',
                 contentTypes: [
                     // List of the Content Types you want to be able to request from Gatsby.
-                    'project',
 					'about',
+					'project',
 					'article',
-					'job'
                 ],
                 queryLimit: 1000,
             },
@@ -27,6 +25,7 @@ module.exports = {
             resolve: `gatsby-plugin-manifest`,
             options: {
                 start_url: '/',
+				icon: 'src/images/icon.png', // This path is relative to the root of the site.
             },
         },
         'gatsby-plugin-offline',

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
-import ReactPlayer from 'react-player';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -9,20 +8,24 @@ import styles from './project.module.css';
 
 const ProjectTemplate = ({ data }) => (
 	<Layout>
+	{console.log(data.strapiProject)}
         <SEO title={data.strapiProject.title} />
         <article>
-            <div className={styles.imageMain}></div>
-            <div className={styles.text}>
-                <h2>
-                    <span className={styles.title}>
-                        {data.strapiProject.title}
-                    </span>
-                    <span className={styles.date}>
-                        {new Date(data.strapiProject.date).getFullYear()}
-                    </span>
-                </h2>
-                <p className={styles.content}>{data.strapiProject.content}</p>
-            </div>
+			<ul className={styles.container}>
+	            <li>
+				</li>
+	            <li className={styles.text}>
+	                <h2>
+	                    <span className={styles.title}>
+	                        {data.strapiProject.title}
+	                    </span>
+	                    <span className={styles.date}>
+	                        {new Date(data.strapiProject.date).getFullYear()}
+	                    </span>
+	                </h2>
+	                <p className={styles.content}>{data.strapiProject.content}</p>
+	            </li>
+			</ul>
         </article>
 	</Layout>
 );
@@ -39,6 +42,69 @@ export const query = graphql`
             location
             highlight
             content
+			imageMain {
+				childImageSharp {
+					fluid(maxWidth: 1000) {
+						...GatsbyImageSharpFluid
+					}
+				}
+			}
+			imageSecondary {
+				childImageSharp {
+					fluid(maxWidth: 1000) {
+						...GatsbyImageSharpFluid
+					}
+				}
+			}
+			picture1 {
+				childImageSharp {
+					fluid(maxWidth: 1000) {
+						...GatsbyImageSharpFluid
+					}
+				}
+			}
+			picture2 {
+				childImageSharp {
+					fluid(maxWidth: 1000) {
+						...GatsbyImageSharpFluid
+					}
+				}
+			}
+			picture3 {
+				childImageSharp {
+					fluid(maxWidth: 1000) {
+						...GatsbyImageSharpFluid
+					}
+				}
+			}
+			picture4 {
+				childImageSharp {
+					fluid(maxWidth: 1000) {
+						...GatsbyImageSharpFluid
+					}
+				}
+			}
+			picture5 {
+				childImageSharp {
+					fluid(maxWidth: 1000) {
+						...GatsbyImageSharpFluid
+					}
+				}
+			}
+			picture6 {
+				childImageSharp {
+					fluid(maxWidth: 1000) {
+						...GatsbyImageSharpFluid
+					}
+				}
+			}
+			picture7 {
+				childImageSharp {
+					fluid(maxWidth: 1000) {
+						...GatsbyImageSharpFluid
+					}
+				}
+			}
         }
     }
 `;

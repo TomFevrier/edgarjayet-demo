@@ -29,7 +29,6 @@ article {
 	transform-origin: top left;
 	white-space: nowrap;
 	padding-left: 15rem;
-
 }
 
 .menuWrapper {
@@ -50,10 +49,17 @@ article {
 
 .menuWrapper .menu li,
 .menuWrapper .menuBottom li {
-    font-size: 16px;
+    font-size: 1rem;
     padding-bottom: 0.5rem;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+}
+
+.menuWrapper .menu li {
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.menuWrapper .menuBottom {
+	margin-bottom: 2rem;
 }
 
 .menuWrapper .menu li.highlighted {
@@ -67,6 +73,15 @@ article {
 .menuWrapper .menuBottom li a {
     color: black;
     text-decoration: none;
+}
+
+.credit {
+	width: 10rem;
+	margin-top: 1rem;
+}
+
+.credit, .credit a {
+	color: lightgrey !important;
 }
 
 .burger {
@@ -129,7 +144,7 @@ article {
 		display: block;
 		transform: rotate(0deg) translateY(0);
 		padding-left: 0;
-		padding-top: 5rem;
+		margin-top: 6rem;
 	}
 
 	.menuWrapper {
@@ -148,7 +163,7 @@ article {
 
 	.menuWrapper .menu li,
 	.menuWrapper .menuBottom li {
-	    font-size: 1rem;
+		font-size: 1.2rem;
 		text-align: center;
 		transition: none;
 		padding: 0.3rem 0;
@@ -156,6 +171,7 @@ article {
 
 	.menuWrapper .menu li.highlighted {
 	    transform: translateX(0);
+		font-weight: bold;
 	}
 
 	.menuWrapper .menu li.all {
