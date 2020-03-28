@@ -78,11 +78,14 @@
 }
 
 @media only screen and (max-width: 1200px) {
+	main {
+		overflow-y: scroll !important;
+	}
+
 	.info, .about, .articles {
 		position: relative;
 		width: 90%;
-		margin: 0;
-		margin-left: 2rem;
+		margin: 0 0 2rem 2rem;
 		padding: 0;
 		top: 0;
 	}

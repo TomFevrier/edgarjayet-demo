@@ -13,7 +13,6 @@ import styles from './index.module.css';
 class IndexPage extends React.Component {
     constructor(props) {
         super(props);
-		console.log(props.data.allStrapiProject.edges)
         this.state = {
             filter: 'all',
         };
@@ -23,6 +22,10 @@ class IndexPage extends React.Component {
 		this.menu = React.createRef();
 		this.burger = React.createRef();
     }
+
+	componentWillUnmount() {
+		if (this.showMenuTimeout) clearTimeout(this.showMenuTimeout);
+	}
 
     showMenu() {
 		if (window.matchMedia('(min-width: 600px)').matches) {

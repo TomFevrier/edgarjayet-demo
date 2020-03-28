@@ -3,8 +3,6 @@ import React from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 
-import classNames from 'classnames';
-
 import styles from './project-preview.module.css';
 
 class ProjectPreview extends React.Component {
@@ -32,24 +30,29 @@ class ProjectPreview extends React.Component {
 
     render() {
         const { node } = this.props;
+		const aleaSize = Math.random();
+		const alea = Math.random();
         return (
 
 					<li className={styles.item}
 						style={node.imageMain.childImageSharp && {
 							width:
 								node.imageMain.childImageSharp.fluid.aspectRatio >= 1
-									? '40rem'
-									: `${80 * node.imageMain.childImageSharp.fluid.aspectRatio}vh`
+									? `${Math.floor(40 + aleaSize * 20) * node.imageMain.childImageSharp.fluid.aspectRatio}vh`
+									: `${Math.floor(70 + aleaSize * 10) * node.imageMain.childImageSharp.fluid.aspectRatio}vh`
 						}}
 					>
-						{console.log(`${Math.floor(40 + Math.random() * 20)}%`)}
 	                    <div className={styles.container}
 							onMouseEnter={this.handleMouseEnter}
 							// onMouseMove={this.handleMouseMove}
 							onMouseLeave={this.handleMouseLeave}
 							style={node.imageMain.childImageSharp && {
-								top: node.imageMain.childImageSharp.fluid.aspectRatio >= 1 ?
-									`${Math.floor(35 + Math.random() * 30)}%` : '50%'
+								top: node.imageMain.childImageSharp.fluid.aspectRatio >= 1
+									? `${Math.floor(10 + (1 - aleaSize) * 30)}vh`
+									: `${alea < 0.5 ? '10vh' : 'auto'}`,
+								bottom: node.imageMain.childImageSharp.fluid.aspectRatio >= 1 || alea < 0.5
+									? 'auto'
+									: '10vh'
 							}}
 	                    >
 	                        <Link to={`/project/${node.slug}`}>

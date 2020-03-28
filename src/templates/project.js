@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import Img from 'gatsby-image';
 
@@ -67,6 +67,59 @@ const ProjectTemplate = ({ data }) => {
 							</div>
 			            </li>
 					}
+					{portraitIndex < portraits.length &&
+						<li style={{ width: `${60 * portraits[portraitIndex][1].childImageSharp.fluid.aspectRatio}vh` }}>
+						   <Img
+							   fluid={portraits[portraitIndex++][1].childImageSharp.fluid}
+							   className={styles.imageSecondary}
+						   />
+					   </li>
+					}
+					{landscapeIndex < landscapes.length && portraitIndex === portraits.length &&
+						<li style={{ width: `${60 * landscapes[landscapeIndex][1].childImageSharp.fluid.aspectRatio}vh` }}>
+						   <Img
+							   fluid={landscapes[landscapeIndex++][1].childImageSharp.fluid}
+							   className={styles.imageSecondary}
+						   />
+					   </li>
+				   	}
+					{landscapeIndex + 1 < landscapes.length &&
+						<li style={{
+							width: `${37.5 * Math.max(
+								landscapes[landscapeIndex][1].childImageSharp.fluid.aspectRatio,
+								landscapes[landscapeIndex + 1][1].childImageSharp.fluid.aspectRatio,
+							)}vh`
+						}}>
+							<div
+								className={styles.imageTop}
+								style={{ width: `${37.5 * landscapes[landscapeIndex][1].childImageSharp.fluid.aspectRatio}vh` }}
+							>
+								<Img fluid={landscapes[landscapeIndex++][1].childImageSharp.fluid} />
+							</div>
+							<div
+								className={styles.imageBottom}
+								style={{ width: `${37.5 * landscapes[landscapeIndex][1].childImageSharp.fluid.aspectRatio}vh` }}
+							>
+								<Img fluid={landscapes[landscapeIndex++][1].childImageSharp.fluid} />
+							</div>
+						</li>
+					}
+					{landscapeIndex < landscapes.length  &&
+						<li style={{ width: `${60 * landscapes[landscapeIndex][1].childImageSharp.fluid.aspectRatio}vh` }}>
+						   <Img
+							   fluid={landscapes[landscapeIndex++][1].childImageSharp.fluid}
+							   className={styles.imageSecondary}
+						   />
+					   </li>
+					}
+					{portraitIndex < portraits.length && landscapeIndex === landscapes.length &&
+						<li style={{ width: `${60 * portraits[portraitIndex][1].childImageSharp.fluid.aspectRatio}vh` }}>
+						   <Img
+							   fluid={portraits[portraitIndex++][1].childImageSharp.fluid}
+							   className={styles.imageSecondary}
+						   />
+					   </li>
+					}
 					{landscapeIndex < landscapes.length && portraitIndex < portraits.length &&
 						<li style={{ width: `${32.5 * landscapes[landscapeIndex][1].childImageSharp.fluid.aspectRatio}vh` }}>
 							<div
@@ -79,6 +132,22 @@ const ProjectTemplate = ({ data }) => {
 								<Img fluid={landscapes[landscapeIndex++][1].childImageSharp.fluid} />
 							</div>
 						</li>
+					}
+					{portraitIndex < portraits.length &&
+						<li style={{ width: `${60 * portraits[portraitIndex][1].childImageSharp.fluid.aspectRatio}vh` }}>
+						   <Img
+							   fluid={portraits[portraitIndex++][1].childImageSharp.fluid}
+							   className={styles.imageSecondary}
+						   />
+					   </li>
+					}
+					{landscapeIndex < landscapes.length && portraitIndex === portraits.length &&
+						<li style={{ width: `${60 * landscapes[landscapeIndex][1].childImageSharp.fluid.aspectRatio}vh` }}>
+						   <Img
+							   fluid={landscapes[landscapeIndex++][1].childImageSharp.fluid}
+							   className={styles.imageSecondary}
+						   />
+					   </li>
 					}
 					{landscapeIndex < landscapes.length && portraitIndex < portraits.length &&
 						<li style={{ width: `${32.5 * landscapes[landscapeIndex][1].childImageSharp.fluid.aspectRatio}vh` }}>
@@ -93,65 +162,17 @@ const ProjectTemplate = ({ data }) => {
 							</div>
 						</li>
 					}
-					{landscapeIndex < landscapes.length && portraitIndex < portraits.length &&
-						<li style={{ width: `${32.5 * landscapes[landscapeIndex][1].childImageSharp.fluid.aspectRatio}vh` }}>
-							<div
-								className={styles.imageTop}
-								style={{ width: `${42.5 * portraits[portraitIndex][1].childImageSharp.fluid.aspectRatio}vh` }}
-							>
-								<Img fluid={portraits[portraitIndex++][1].childImageSharp.fluid} />
-							</div>
-							<div className={styles.imageBottom}>
-								<Img fluid={landscapes[landscapeIndex++][1].childImageSharp.fluid} />
+					{landscapes.slice(landscapeIndex).map((landscape) => (
+						<li style={{ width: `${80 * landscape[1].childImageSharp.fluid.aspectRatio}vh` }} key={landscape}>
+							<div className={styles.imageTop}>
+								<Img fluid={landscape[1].childImageSharp.fluid} />
 							</div>
 						</li>
-					}
-					{landscapeIndex + 1 < landscapes.length &&
-						<li style={{
-							width: `${37.5 * Math.max(
-								landscapes[landscapeIndex][1].childImageSharp.fluid.aspectRatio,
-								landscapes[landscapeIndex + 1][1].childImageSharp.fluid.aspectRatio,
-							)}vh`
-						}}>
-							<div
-								className={styles.imageTop}
-								style={{ width: `${37.5 * landscapes[landscapeIndex][1].childImageSharp.fluid.aspectRatio}vh` }}
-							>
-								<Img fluid={landscapes[landscapeIndex++][1].childImageSharp.fluid} />
-							</div>
-							<div
-								className={styles.imageBottom}
-								style={{ width: `${37.5 * landscapes[landscapeIndex][1].childImageSharp.fluid.aspectRatio}vh` }}
-							>
-								<Img fluid={landscapes[landscapeIndex++][1].childImageSharp.fluid} />
-							</div>
-						</li>
-					}
-					{landscapeIndex + 1 < landscapes.length &&
-						<li style={{
-							width: `${37.5 * Math.max(
-								landscapes[landscapeIndex][1].childImageSharp.fluid.aspectRatio,
-								landscapes[landscapeIndex + 1][1].childImageSharp.fluid.aspectRatio,
-							)}vh`
-						}}>
-							<div
-								className={styles.imageTop}
-								style={{ width: `${37.5 * landscapes[landscapeIndex][1].childImageSharp.fluid.aspectRatio}vh` }}
-							>
-								<Img fluid={landscapes[landscapeIndex++][1].childImageSharp.fluid} />
-							</div>
-							<div
-								className={styles.imageBottom}
-								style={{ width: `${37.5 * landscapes[landscapeIndex][1].childImageSharp.fluid.aspectRatio}vh` }}
-							>
-								<Img fluid={landscapes[landscapeIndex++][1].childImageSharp.fluid} />
-							</div>
-						</li>
-					}
+					))}
 					{portraits.slice(portraitIndex).map((portrait) => (
 						<li style={{ width: `${80 * portrait[1].childImageSharp.fluid.aspectRatio}vh` }} key={portrait}>
 							<div className={styles.imageTop}>
-								<Img frelativeluid={portrait[1].childImageSharp.fluid} />
+								<Img fluid={portrait[1].childImageSharp.fluid} />
 							</div>
 						</li>
 					))}
