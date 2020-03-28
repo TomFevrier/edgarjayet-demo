@@ -11,7 +11,7 @@ aside {
 	overflow-y: hidden;
 }
 
-article {
+.article {
 	overflow-y: scroll;
 	overflow-x: hidden;
 	transform: rotate(270deg) translateX(-100%);
@@ -134,7 +134,7 @@ article {
 		width: 100%;
 	}
 
-	article {
+	.article {
 		overflow-y: scroll;
 		overflow-x: hidden;
 		transform: rotate(0deg) translateX(0);

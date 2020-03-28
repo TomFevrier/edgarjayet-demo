@@ -1,44 +1,166 @@
+.english {
+	font-style: italic;
+}
+
+.article {
+	overflow-y: scroll;
+	overflow-x: hidden;
+	transform: rotate(270deg) translateX(-100%);
+	transform-origin: top left;
+	position: absolute;
+	width: 100vh;
+	height: 100vw;
+	left: 0;
+	top: 0;
+}
+
 .container {
 	display: inline-block;
 	transform: rotate(90deg) translateY(-100vh);
 	transform-origin: top left;
 	white-space: nowrap;
-	padding-left: 15rem;
 }
 
 .container li {
+	display: inline-block;
+	width: 40rem;
 	height: 100vh;
-	width: 50rem;
-	background-color: red;
+	position: relative;
+	margin: 0 4rem;
+	padding: 0;
+	vertical-align: top;
+}
+
+.imageMain {
+	margin-top: 10vh;
+	height: 80vh;
 }
 
 .text {
-    width: 600px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.text h2 {
-    display: block;
-    margin: 0 auto;
-    width: min-content;
-    line-height: 150%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	height: 80vh;
+	margin-top: 10vh;
 }
 
 .title {
-    font-size: 50px;
+	width: 80%;
 }
 
-.date {
-    font-size: 18px;
-    font-weight: normal;
-    vertical-align: top;
+.title h3 {
+    font-size: 3rem;
+    margin: 0.2rem 0;
+	position: relative;
+	width: fit-content;
+}
+
+.title .year {
+	display: block;
+	position: absolute;
+	top: 5%;
+	left: 100%;
+	font-weight: normal;
+	font-size: 1.5rem;
+	padding-left: 2px;
+}
+
+.title h4 {
+    font-size: 1.5rem;
+	font-weight: normal;
+    margin: 0.2rem 0;
 }
 
 .content {
-    font-size: 14px;
-    width: 60%;
-    margin: 0 auto;
+	width: 80%;
+	text-align: justify;
+	white-space: normal;
+}
+
+.content div {
+	margin-top: 1rem;
+}
+
+.imageSecondary {
+	margin-top: 20vh;
+}
+
+.imageTop {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top: 10vh;
+}
+
+.imageBottom {
+	position: absolute;
+	width: 100%;
+	left: 0;
+	bottom: 10vh;
+}
+
+.highlight {
+	font-size: 1.5rem;
+	width: 75%;
+	margin: 0 auto;
+	white-space: normal;
+	text-align: justify;
+	position: absolute;
+	bottom: 10vh;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.highlight div {
+	margin-top: 1rem;
+}
+
+@media only screen and (max-width: 600px) {
+
+	.article {
+		overflow-y: hidden;
+		overflow-x: hidden;
+		transform: rotate(0deg) translateX(0);
+		width: 100%;
+		height: auto;
+	}
+
+	.container {
+		display: block;
+		transform: rotate(0deg) translateY(0);
+		padding-left: 0;
+		margin-top: 6rem;
+	}
+
+	.container li {
+		display: block;
+		width: 90% !important;
+		margin: 0 auto;
+		height: auto;
+	}
+
+	.container li div {
+		display: block;
+		width: 100% !important;
+		margin: 2rem auto;
+		height: auto;
+	}
+
+	.text .title, .text .content {
+		width: 100%;
+	}
+
+	.highlight {
+		font-size: 1.3rem;
+		position: static;
+		transform: none;
+	}
+
+	.imageTop, .imageBottom {
+		display: block;
+		position: static;
+		height: auto;
+	}
+
 }

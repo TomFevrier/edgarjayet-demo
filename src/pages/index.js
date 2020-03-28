@@ -153,7 +153,7 @@ class IndexPage extends React.Component {
 	                    <div className={styles.line}></div>
 	                </div>
 				</aside>
-                <article>
+                <article className={styles.article}>
                     <ul className={styles.container}>
                         {this.props.data.allStrapiProject.edges
 							.filter(({ node }) => state.filter === 'all' || state.filter === node.category)
